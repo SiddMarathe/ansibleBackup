@@ -1,0 +1,11 @@
+---
+- name: Using bash
+  hosts: hostA
+  tasks:
+    - name: Non-idempotent approach with shell module
+      shell:
+        cmd: |     #"|" is  used for writting multi lines
+          echo "sid
+          this is second" > test.txt
+          
+...

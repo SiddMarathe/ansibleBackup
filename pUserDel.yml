@@ -1,0 +1,14 @@
+---
+- name: addUser to managed hosts
+  hosts: hostA
+  tasks:
+    - name: dev with UID 4000
+      user:
+        name: dev
+        uid: 4000
+        state: absent
+        remove: yes
+      register: info
+    - debug: var=info
+
+        

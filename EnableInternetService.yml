@@ -1,0 +1,44 @@
+- name: Enable Web Server
+  hosts: hostA
+  tasks:
+    - apt:
+       pkg:
+        - ufw
+        - apache2
+        - mariadb-server
+        - php
+        - php-mysqlnd
+       state: latest
+    - name: Enable and run Firewall
+      service:
+        name: ufw
+        enabled: true
+        state: started
+    - name: Enable http in Firewall
+      ufw:
+        rule: allow
+        port: '80'
+        proto: tcp
+    - name: Enable httpd and run
+      service:
+        name: apache2
+        enabled: true
+        state: started
+    - name: Enable mariaDb and run
+      service: 
+        name: mariadb
+        enabled: true
+        state: started
+        #- name: test php 
+        #get_url:
+        #  url: "http://hostA/index.php"
+        #dest: /var/ww/html/index.php
+        #mode: 0644
+
+
+
+
+
+
+
+

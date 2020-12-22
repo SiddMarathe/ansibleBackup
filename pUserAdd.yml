@@ -1,0 +1,19 @@
+---
+- name: addUser to managed hosts
+  hosts: hostA
+  tasks:
+    - name: dev with UID 4000
+      user:
+        name: dev
+        uid: 4000
+        state: present
+        home: /home/anCreUser
+        password: "{{ '123' | password_hash('sha512') }}"
+        update_password: "on_create"
+        shell: /bin/bash
+        generate_ssh_key: yes
+        ssh_key_passphrase: 
+      register: info
+    - debug: var=info
+
+...       

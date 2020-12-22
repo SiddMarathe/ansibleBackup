@@ -1,0 +1,12 @@
+- name: test apt
+  hosts: hostA
+  tasks:
+    - apt:
+       pkg:
+         - apache2
+         - firewalld
+         - mariadb-server
+         - php
+         - php-mysqlnd
+
+       state: latest
